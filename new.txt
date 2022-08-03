@@ -1,0 +1,13 @@
+Solution file
+----------------------
+Essential import for mlflow ui(requirements.txt)
+---------------------------
+mlflow
+
+-----------------------------
+Essential import for mlflow library
+-----------
+import mlflow
+----------------
+
+
