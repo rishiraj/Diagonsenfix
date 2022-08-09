@@ -35,6 +35,9 @@ data_columns.categorical_features = ['holiday', 'workingday']
 #evaluate data drift with Evidently Profile
 #evaluate data drift with Evidently Profile
 def eval_drift(reference, production, column_mapping):
+    '''Take reference begin and end dates and
+    evaluate the drift in data in that period.'''
+    
     data_drift_profile = Profile(sections=[DataDriftProfileSection()])
     data_drift_profile.calculate(reference, production, column_mapping=column_mapping)
     report = data_drift_profile.json()
