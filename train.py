@@ -18,7 +18,6 @@ import mlflow.sklearn
 from mlflow.tracking import MlflowClient
 
 #load data
-#load data
 content = requests.get("https://archive.ics.uci.edu/ml/machine-learning-databases/00275/Bike-Sharing-Dataset.zip").content
 with zipfile.ZipFile(io.BytesIO(content)) as arc:
     raw_data = pd.read_csv(arc.open("day.csv"), header=0, sep=',', parse_dates=['dteday'], index_col='dteday')
@@ -26,13 +25,10 @@ with zipfile.ZipFile(io.BytesIO(content)) as arc:
 raw_data.head()
 
 #set column mapping for Evidently Profile
-#set column mapping for Evidently Profile
-#set column mapping for Evidently Profile
 data_columns = ColumnMapping()
 data_columns.numerical_features = ['weathersit', 'temp', 'atemp', 'hum', 'windspeed']
 data_columns.categorical_features = ['holiday', 'workingday']
 
-#evaluate data drift with Evidently Profile
 #evaluate data drift with Evidently Profile
 def eval_drift(reference, production, column_mapping):
     data_drift_profile = Profile(sections=[DataDriftProfileSection()])
@@ -81,6 +77,3 @@ for date in experiment_batches:
             mlflow.log_metric(feature[0], round(feature[1], 3))
 
         print(run.info)
-
-
-
